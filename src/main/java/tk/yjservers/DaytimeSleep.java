@@ -28,7 +28,6 @@ public class DaytimeSleep extends JavaPlugin{
         ArrayList<EntityType> typelist = new ArrayList<>();
         for (Entity e : list) {
             typelist.add(e.getType());
-            getLogger().info("Entities nearby " + p.getName() + ": " + e.getType().getName());
         }
         EntityType[] hostilelist = {EntityType.BLAZE, EntityType.CAVE_SPIDER, EntityType.CREEPER, EntityType.ENDERMAN, EntityType.PIG_ZOMBIE, EntityType.SILVERFISH, EntityType.SKELETON, EntityType.SPIDER, EntityType.WITCH, EntityType.WITHER};
         return !Collections.disjoint(typelist, Arrays.asList(hostilelist));
