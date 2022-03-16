@@ -27,8 +27,11 @@ public class BedEvent implements Listener {
         Player p = e.getPlayer();
         Action a = e.getAction();
         Block b = e.getClickedBlock();
-        if (a.equals(Action.RIGHT_CLICK_BLOCK) && DaytimeSleep.isBed(b) && b.getLocation().distanceSquared(p.getLocation()) < 3
-                && b.getWorld().getEnvironment().equals(World.Environment.NORMAL) && !DaytimeSleep.anyHostileNearby(p)) {
+        if (a.equals(Action.RIGHT_CLICK_BLOCK)
+                && DaytimeSleep.isBed(b)
+                && b.getLocation().distanceSquared(p.getLocation()) < 3
+                && b.getWorld().getEnvironment().equals(World.Environment.NORMAL)
+                && !DaytimeSleep.anyHostileNearby(p)) {
 
             Bed bed = (Bed) b.getState().getData();
             Location headloc;
@@ -64,32 +67,27 @@ public class BedEvent implements Listener {
             locs.add(DaytimeSleep.changeLoc(tailloc, 0, 1, 0));
 
             for (Location loc : locs) {
-                Bukkit.getLogger().info(locs.indexOf(loc) + ": " + loc.toVector().toString());
                 Material below = DaytimeSleep.changeLoc(loc, 0, -1, 0).getBlock().getType();
                 Material above = DaytimeSleep.changeLoc(loc, 0, 1, 0).getBlock().getType();
                 Material origin = loc.getBlock().getType();
                 if (locs.indexOf(loc) < 10) {
-                    Bukkit.getLogger().info("below 10");
                     if (below.isSolid() && origin.equals(Material.AIR) && above.equals(Material.AIR)) {
                         p.setBedSpawnLocation(loc);
                         p.sendMessage("Your spawn has been set to " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
                         return;
                     }
                 } else if (locs.indexOf(loc) == 10){
-                    Bukkit.getLogger().info("10");
                     if ((below.isSolid() ||  below.equals(Material.BED_BLOCK)) && origin.equals(Material.AIR) && above.equals(Material.AIR)) {
                         p.setBedSpawnLocation(loc);
                         p.sendMessage("Your spawn has been set to " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
                         return;
                     }
                 } else {
-                    Bukkit.getLogger().info("11");
                     // if all else fails, default to loc 11
                     p.setBedSpawnLocation(loc);
                     p.sendMessage("Your spawn has been set to " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
                 }
             }
-            Bukkit.getLogger().info("event end");
         }
     }
 }
