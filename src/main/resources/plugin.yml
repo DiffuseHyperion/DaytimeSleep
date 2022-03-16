@@ -1,0 +1,4 @@
+main: tk.yjservers.DaytimeSleep
+version: 1.0.0
+name: DaytimeSleep
+description: (you dont actually sleep lol)
