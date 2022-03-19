@@ -54,12 +54,6 @@
     </build>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.javatuples/javatuples -->
-        <dependency>
-            <groupId>org.javatuples</groupId>
-            <artifactId>javatuples</artifactId>
-            <version>1.2</version>
-        </dependency>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
